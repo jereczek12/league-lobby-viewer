@@ -1,20 +1,15 @@
 import controllers.LobbyViewerController;
-import feign.FeignImpl;
-import feign.Response;
-import lombok.extern.slf4j.Slf4j;
 import processmanager.LeagueClientProcessManager;
 import view.LobbyViewerUI;
 
 import javax.swing.*;
 
-@Slf4j
 public class LeagueLobbyViewerApplication {
     LeagueLobbyViewerApplication() {
         setLookAndFeel();
         LobbyViewerUI lobbyViewerUI = new LobbyViewerUI();
         LeagueClientProcessManager leagueClientProcessManager = new LeagueClientProcessManager();
         LobbyViewerController lobbyViewerController = new LobbyViewerController(lobbyViewerUI, leagueClientProcessManager);
-        Response response = new FeignImpl().getClient().get();
     }
 
 
