@@ -1,21 +1,15 @@
 package controllers;
 
 import feign.LeagueChatClientImpl;
-import model.Participant;
-import model.Participants;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import processmanager.LeagueClientInstance;
 import processmanager.LeagueClientProcessManager;
 import view.LobbyViewerUI;
 
-import java.awt.Desktop;
-import java.awt.Toolkit;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-import java.io.IOException;
-import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -23,7 +17,6 @@ public class LobbyViewerController {
     private final LobbyViewerUI lobbyViewerUI;
     private final LeagueClientProcessManager leagueClientProcessManager;
     private LeagueChatClientImpl feignClient;
-    private Participants participants;
 
 
     public LobbyViewerController(LobbyViewerUI lobbyViewerUI, LeagueClientProcessManager leagueClientProcessManager) {
@@ -34,62 +27,30 @@ public class LobbyViewerController {
 
     void addListeners() {
         lobbyViewerUI.getCopyNamesButton().addActionListener(e -> {
-            copySummonerNamesToClipboard();
+            copySummonerNames();
         });
         lobbyViewerUI.getGetNamesButton().addActionListener(e -> {
-            setFeignClient();
-            participants = feignClient.getPlayers();
-            lobbyViewerUI.setSummonerNamesFields(buildPlayersUrls(participants));
-        });
-        lobbyViewerUI.getOpggButton().addActionListener(e -> {
-            openOpGg();
+            getNames();
         });
     }
 
-    private void openOpGg() {
-        if (participants == null || participants.getParticipants().isEmpty()) {
-            return;
-        }
-        String url = String.format("https://www.op.gg/multisearch/%s?summoners=%s", feignClient.getRegion(), getNamesAsString());
-        try {
-            Desktop.getDesktop().browse(URI.create(url));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
-    private void setFeignClient() {
+    private void getNames() {
         leagueClientProcessManager.setClientInstance();
         LeagueClientInstance leagueClientInstance = leagueClientProcessManager.getLeagueClientInstance();
         feignClient = new LeagueChatClientImpl(leagueClientInstance);
+        List<String> responsePlayers = feignClient.getPlayers();
+        String regionResponse = feignClient.getRegion();
     }
 
-
-    private List<String> buildPlayersUrls(Participants participants) {
-        List<String> playersUrls = new ArrayList<>();
-        String template = "<a href=\"https://www.op.gg/summoners/%s/%s\">%s</a>";
-        for (Participant participant : participants.getParticipants()) {
-            playersUrls.add(String.format(template, participant.getRegion(), participant.getName(), participant.getName()));
+    private void copySummonerNames() {
+        StringBuilder summonerNames = new StringBuilder();
+        for (JTextField summonersTextField : lobbyViewerUI.getSummonersTextFields()) {
+            summonerNames.append(summonersTextField.getText());
+            summonerNames.append(", ");
         }
-        return playersUrls;
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(new StringSelection(summonerNames.toString()), null);
     }
 
-    private void copySummonerNamesToClipboard() {
-        if (participants == null || participants.getParticipants().isEmpty()) {
-            return;
-        }
-            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-            clipboard.setContents(new StringSelection(
-                    getNamesAsString()), null);
-    }
-
-    private String getNamesAsString() {
-        return StringUtils.chop(
-                participants.getParticipants().stream()
-                        .map(participant -> participant.getName())
-                        .toList()
-                        .toString().substring(1));
-    }
 
 }

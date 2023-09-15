@@ -40,19 +40,19 @@
             <properties/>
             <border type="line"/>
             <children>
-              <component id="3e94a" class="javax.swing.JTextPane" binding="summoner2">
+              <component id="89eb4" class="javax.swing.JTextField" binding="summoner2">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="8" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="200" height="20"/>
                   </grid>
                 </constraints>
                 <properties>
-                  <contentType value="text/html"/>
+                  <columns value="5"/>
                   <editable value="false"/>
                   <enabled value="true"/>
                   <focusable value="true"/>
                   <opaque value="false"/>
-                  <text value="&lt;html&gt;&#13;&#10;  &lt;head&gt;&#13;&#10;&#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p style=&quot;margin-top: 0&quot;&gt;&#13;&#10;      &#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;&#13;&#10;&lt;/html&gt;&#13;&#10;"/>
+                  <text value="Summoner2"/>
                 </properties>
               </component>
             </children>
@@ -65,19 +65,19 @@
             <properties/>
             <border type="line"/>
             <children>
-              <component id="5e5f7" class="javax.swing.JTextPane" binding="summoner3">
+              <component id="b6a2b" class="javax.swing.JTextField" binding="summoner3">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="8" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="200" height="20"/>
                   </grid>
                 </constraints>
                 <properties>
-                  <contentType value="text/html"/>
+                  <columns value="5"/>
                   <editable value="false"/>
                   <enabled value="true"/>
                   <focusable value="true"/>
                   <opaque value="false"/>
-                  <text value="&lt;html&gt;&#13;&#10;  &lt;head&gt;&#13;&#10;&#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p style=&quot;margin-top: 0&quot;&gt;&#13;&#10;      &#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;&#13;&#10;&lt;/html&gt;&#13;&#10;"/>
+                  <text value="Summoner3"/>
                 </properties>
               </component>
             </children>
@@ -90,19 +90,19 @@
             <properties/>
             <border type="line"/>
             <children>
-              <component id="3cbb4" class="javax.swing.JTextPane" binding="summoner4">
+              <component id="e50f4" class="javax.swing.JTextField" binding="summoner4">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="8" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="200" height="20"/>
                   </grid>
                 </constraints>
                 <properties>
-                  <contentType value="text/html"/>
+                  <columns value="5"/>
                   <editable value="false"/>
                   <enabled value="true"/>
                   <focusable value="true"/>
                   <opaque value="false"/>
-                  <text value="&lt;html&gt;&#13;&#10;  &lt;head&gt;&#13;&#10;&#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p style=&quot;margin-top: 0&quot;&gt;&#13;&#10;      &#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;&#13;&#10;&lt;/html&gt;&#13;&#10;"/>
+                  <text value="Summoner4"/>
                 </properties>
               </component>
             </children>
@@ -117,19 +117,19 @@
             </properties>
             <border type="line"/>
             <children>
-              <component id="858b9" class="javax.swing.JTextPane" binding="summoner1">
+              <component id="d19d8" class="javax.swing.JTextField" binding="summoner1">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="8" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="200" height="20"/>
                   </grid>
                 </constraints>
                 <properties>
-                  <contentType value="text/html"/>
+                  <columns value="5"/>
                   <editable value="false"/>
                   <enabled value="true"/>
                   <focusable value="true"/>
                   <opaque value="false"/>
-                  <text value="&lt;html&gt;&#13;&#10;  &lt;head&gt;&#13;&#10;&#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p style=&quot;margin-top: 0&quot;&gt;&#13;&#10;      &#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;&#13;&#10;&lt;/html&gt;&#13;&#10;"/>
+                  <text value="Summoner1"/>
                 </properties>
               </component>
             </children>
@@ -142,19 +142,19 @@
             <properties/>
             <border type="line"/>
             <children>
-              <component id="d876c" class="javax.swing.JTextPane" binding="summoner5">
+              <component id="54a80" class="javax.swing.JTextField" binding="summoner5">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="8" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="200" height="20"/>
                   </grid>
                 </constraints>
                 <properties>
-                  <contentType value="text/html"/>
+                  <columns value="5"/>
                   <editable value="false"/>
                   <enabled value="true"/>
                   <focusable value="true"/>
                   <opaque value="false"/>
-                  <text value="&lt;html&gt;&#13;&#10;  &lt;head&gt;&#13;&#10;&#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p style=&quot;margin-top: 0&quot;&gt;&#13;&#10;      &#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;&#13;&#10;&lt;/html&gt;&#13;&#10;"/>
+                  <text value="Summoner5"/>
                 </properties>
               </component>
             </children>

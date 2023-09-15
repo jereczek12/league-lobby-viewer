@@ -1,7 +1,6 @@
 package feign;
 
 import com.google.gson.JsonObject;
-import model.Participants;
 
 
 /**
@@ -26,6 +25,6 @@ public interface IChatClient {
      */
     @RequestLine("GET /chat/v5/participants/champ-select")
     @Headers("Authorization: Basic {authToken}")
-    Participants getPlayers(@Param("authToken") String authToken);
+    JsonObject getPlayers(@Param("authToken") String authToken);
 
 }

@@ -5,10 +5,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
-import model.Participants;
-import feign.ssl.InsecureSslSocketFactory;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import processmanager.LeagueClientInstance;
+import feign.ssl.InsecureSslSocketFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +18,7 @@ import java.util.List;
  */
 @Slf4j
 public class LeagueChatClientImpl {
+    @Getter
     private final IChatClient client;
     private final LeagueClientInstance instance;
 
@@ -37,10 +38,11 @@ public class LeagueChatClientImpl {
      *
      * @return List of players names in champion select lobby
      */
-    public Participants getPlayers() {
-        Participants players = client.getPlayers(instance.leagueClientAuthToken());
-        log.debug("Players request response: {}", players.getParticipants());
-        return players;
+    public List<String> getPlayers() {
+        JsonObject players = client.getPlayers(instance.leagueClientAuthToken());
+        log.debug("Players request response: {}", players);
+        List<String> playersNames = getPlayersNamesFromJson(players);
+        return playersNames;
     }
 
     /**
