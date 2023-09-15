@@ -2,10 +2,15 @@ import controllers.LobbyViewerController;
 import processmanager.LeagueClientProcessManager;
 import view.LobbyViewerUI;
 
-import javax.swing.*;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class LeagueLobbyViewerApplication {
-    LeagueLobbyViewerApplication() {
+    public LeagueLobbyViewerApplication() {
+        startApplication();
+    }
+
+    private void startApplication() {
         setLookAndFeel();
         LobbyViewerUI lobbyViewerUI = new LobbyViewerUI();
         LeagueClientProcessManager leagueClientProcessManager = new LeagueClientProcessManager();
