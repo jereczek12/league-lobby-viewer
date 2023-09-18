@@ -7,8 +7,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import processmanager.LeagueClientInstance;
 import processmanager.LeagueClientProcessManager;
+import processmanager.ProcessNotFoundException;
 import view.LobbyViewerUI;
 
+import javax.swing.JOptionPane;
 import java.awt.Desktop;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
@@ -36,11 +38,18 @@ public class LobbyViewerController {
         lobbyViewerUI.getCopyNamesButton().addActionListener(e -> {
             copySummonerNamesToClipboard();
         });
+
         lobbyViewerUI.getGetNamesButton().addActionListener(e -> {
-            setFeignClient();
-            participants = feignClient.getPlayers();
-            lobbyViewerUI.setSummonerNamesFields(buildPlayersUrls(participants));
+            try {
+                setFeignClient();
+                participants = feignClient.getPlayers();
+                lobbyViewerUI.setSummonerNamesFields(buildPlayersUrls(participants));
+            } catch (ProcessNotFoundException processException) {
+                processException.printStackTrace();
+                JOptionPane.showMessageDialog(lobbyViewerUI, processException.getMessage(), "Process not found!", JOptionPane.ERROR_MESSAGE);
+            }
         });
+
         lobbyViewerUI.getOpggButton().addActionListener(e -> {
             openOpGg();
         });
@@ -79,15 +88,15 @@ public class LobbyViewerController {
         if (participants == null || participants.getParticipants().isEmpty()) {
             return;
         }
-            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-            clipboard.setContents(new StringSelection(
-                    getNamesAsString()), null);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(new StringSelection(
+                getNamesAsString()), null);
     }
 
     private String getNamesAsString() {
         return StringUtils.chop(
                 participants.getParticipants().stream()
-                        .map(participant -> participant.getName())
+                        .map(Participant::getName)
                         .toList()
                         .toString().substring(1));
     }

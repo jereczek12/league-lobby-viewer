@@ -22,9 +22,8 @@ public class LeagueClientProcessManager {
      * Runs a cmd.exe "wmic" command to get the commandline of a process with given name, captures and returns the outptut of cmd as a string.
      *
      * @param processName Name of the process to get a full command line of.
-     * @return
      */
-    public String getProcessCommandLine(String processName) {
+    public void getProcessCommandLine(String processName) {
         StringBuilder commandLineBuilder = new StringBuilder();
         try {
             String command = "wmic process where \"name='" + processName + "'\" get commandline";
@@ -40,6 +39,9 @@ public class LeagueClientProcessManager {
             while ((line = reader.readLine()) != null) {
                 commandLineBuilder.append(line);
             }
+            if (commandLineBuilder.isEmpty()) {
+                throw new ProcessNotFoundException(processName);
+            }
             reader.close();
             processInputReader.close();
             process.destroy();
@@ -48,7 +50,6 @@ public class LeagueClientProcessManager {
         }
         commandLine = substringAfter(commandLineBuilder.toString(), "CommandLine").trim();
         log.debug("Full commandline of process: {}", commandLine);
-        return commandLine;
     }
 
     /**
