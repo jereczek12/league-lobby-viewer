@@ -1,2 +1,2 @@
 # league-lobby-viewer
-Small program used to get the hidden names of other players in your team
+Small desktop app allowing the user to view hidden names of other players in your team before the game begins
